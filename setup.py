@@ -14,6 +14,7 @@ setup(name='fanfou_sdk',
       packages=['fanfou_sdk'],
       install_requires=['six', 'requests'],
       long_description=DESC,
+      long_description_content_type='text/markdown',
       license='MIT',
       platforms=['any'],
       keywords='fanfou')
