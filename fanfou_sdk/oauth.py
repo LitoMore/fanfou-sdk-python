@@ -42,7 +42,7 @@ class OAuth(object):
             'oauth_consumer_key': self.consumer['key'],
             'oauth_signature_method': 'HMAC-SHA1',
             'oauth_timestamp': str(int(time.time())),
-            'oauth_nonce': ''.join([str(random.randint(0, 9)) for i in range(8)]),
+            'oauth_nonce': ''.join([str(random.randint(0, 9)) for _ in range(8)]),
             'oauth_version':  '1.0'
         }
         if 'key' in token:
