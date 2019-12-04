@@ -1,6 +1,6 @@
 # fanfou-sdk-python
 
-[![](https://github.com/LitoMore/fanfou-sdk-python/workflows/Node%20CI/badge.svg)](https://github.com/LitoMore/fanfou-sdk-python/actions)
+[![](https://github.com/LitoMore/fanfou-sdk-python/workflows/CI/badge.svg)](https://github.com/LitoMore/fanfou-sdk-python/actions)
 
 Fanfou SDK for Python
 
