@@ -4,7 +4,9 @@ Fanfou SDK for Python
 
 ## Install
 
-> pip install fanfou_sdk
+```bash
+$ pip install fanfou_sdk
+```
 
 ---
 
