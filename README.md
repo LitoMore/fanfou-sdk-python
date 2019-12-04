@@ -4,7 +4,7 @@ Fanfou SDK for Python
 
 ## Install
 
-> To be written
+> pip install fanfou_sdk
 
 ---
 
@@ -100,7 +100,7 @@ Use `hooks` for your reverse-proxy server
 
 ```python
 ff = Fanfou(
-  consumser_key='',
+  consumer_key='',
   consumer_secret='',
   oauth_token='',
   oauth_token_secret='',
