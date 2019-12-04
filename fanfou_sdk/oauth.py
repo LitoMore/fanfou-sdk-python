@@ -9,7 +9,7 @@ import binascii
 from six.moves.urllib import parse
 
 
-def hmacsha1(key, base_string):
+def hmacsha1(base_string, key):
     hash = hmac.new(key.encode(), base_string.encode(), hashlib.sha1)
     return binascii.b2a_base64(hash.digest())[:-1]
 
@@ -17,7 +17,7 @@ def hmacsha1(key, base_string):
 class OAuth(object):
     def __init__(
         self,
-        consumer='',
+        consumer={},
         nonce_length=32,
         version='1.0',
         parameter_seperator=', ',
@@ -40,7 +40,7 @@ class OAuth(object):
     def authorize(self, request, token={}):
         oauth_data = {
             'oauth_consumer_key': self.consumer['key'],
-            'oauth_signature_mothod': 'HMAC-SHA1',
+            'oauth_signature_method': 'HMAC-SHA1',
             'oauth_timestamp': str(int(time.time())),
             'oauth_nonce': ''.join([str(random.randint(0, 9)) for i in range(8)]),
             'oauth_version':  '1.0'
@@ -73,13 +73,19 @@ class OAuth(object):
         return '&'.join('%s=%s' % (k, self.escape(v, via, safe)) for k, v in sorted(args.items()))
 
     def get_base_string(self, request, oauth_data):
+        query = parse.urlparse(request['url'])[4:-1][0]
+        params = {}
+        for k, v in parse.parse_qs(query).items():
+            params[k] = v[0]
+        params.update(request['data'])
+        oauth_data.update(params)
         base_elements = (request['method'].upper(), self.normalized_url(
             request['url']), self.get_query(oauth_data))
         base_string = '&'.join(self.escape(s) for s in base_elements)
         return base_string
 
     def get_signing_key(self, token_secret=''):
-        if self.last_ampersand & (token_secret == ''):
+        if (self.last_ampersand == False) & (token_secret == ''):
             return self.escape(self.consumer['secret'])
         return self.escape(self.consumer['secret']) + '&' + self.escape(token_secret)
 
