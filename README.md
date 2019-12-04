@@ -1,6 +1,8 @@
 # fanfou-sdk-python
 
 [![](https://github.com/LitoMore/fanfou-sdk-python/workflows/CI/badge.svg)](https://github.com/LitoMore/fanfou-sdk-python/actions)
+[![](https://img.shields.io/pypi/v/fanfou-sdk)](https://pypi.org/project/fanfou-sdk)
+[![](https://img.shields.io/pypi/l/fanfou-sdk)](https://github.com/LitoMore/fanfou-sdk-python/blob/master/LICENSE)
 
 Fanfou SDK for Python
 
