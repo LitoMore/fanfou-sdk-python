@@ -18,7 +18,7 @@ class Fanfou:
         oauth_domain='fanfou.com',
         protocol='http:',
         hooks={
-            'base_string': lambda str: str
+            'base_string': lambda s: s
         }
     ):
         self.consumer_key = consumer_key

@@ -113,7 +113,7 @@ ff = Fanfou(
   api_domain='api.example.com',
   oauth_domain='example.com',
   hooks={
-    'base_string': lambda str: str.replace('example.com', 'fanfou.com')
+    'base_string': lambda s: s.replace('example.com', 'fanfou.com')
   }
 )
 ```
