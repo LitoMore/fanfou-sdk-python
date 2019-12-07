@@ -89,13 +89,9 @@ st, _ = ff.post('/statuses/update', {status: 'hi flora'})
 print(st)
 
 st, _ = ff.post(
-  '/statuses/upload',
-  params={
-    'status': 'unicorn'
-  },
-  files={
-    'photo': open('file_path', 'rb')
-  }
+  '/photos/upload',
+  params={'status': 'unicorn'},
+  files={'photo': open('file_path', 'rb')}
 )
 print(st)
 ```
