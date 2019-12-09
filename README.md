@@ -74,7 +74,7 @@ print(status)
 ## API
 
 ```
-ff.requets_token()
+ff.request_token()
 ff.access_token(token)
 ff.xauth()
 ff.get(uri, params={})
