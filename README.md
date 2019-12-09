@@ -74,6 +74,8 @@ print(status)
 ## API
 
 ```
+ff.requets_token()
+ff.access_token(token)
 ff.xauth()
 ff.get(uri, params={})
 ff.post(uri, params={}, files=None)
@@ -82,12 +84,23 @@ ff.post(uri, params={}, files=None)
 ### Examples
 
 ```python
+# Get Request token
+token, _ = ff.request_token()
+print(token)
+
+# Get access token
+token, _ = ff.access_token()
+print(token)
+
+# Get home-timeline
 tl, _ = ff.get('/statuses/home_timeline')
 print(tl)
 
+# Post a status
 st, _ = ff.post('/statuses/update', {status: 'hi flora'})
 print(st)
 
+# Upload a photo
 st, _ = ff.post(
   '/photos/upload',
   params={'status': 'unicorn'},

@@ -56,6 +56,40 @@ class Fanfou:
         self.oauth_endpoint = self.protocol + '//' + self.oauth_domain
         return self
 
+    def request_token(self):
+        url = self.oauth_endpoint + '/oauth/request_token'
+        authorization = self.o.get_authorization(
+            self.o.authorize({'url': url, 'method': 'GET'}))
+        r = requests.get(
+            url,
+            headers={
+                'Authorization': authorization
+            }
+        )
+        if (r.status_code != 200):
+            return None, r
+        token = parse.parse_qs(r.text)
+        self.oauth_token = token['oauth_token'][0]
+        self.oauth_token_secret = token['oauth_token_secret'][0]
+        return {'oauth_token': self.oauth_token, 'oauth_token_secret': self.oauth_token_secret}, r
+
+    def access_token(self, token):
+        url = self.oauth_endpoint + '/oauth/access_token'
+        authorization = self.o.get_authorization(self.o.authorize({'url': url, 'method': 'GET'}, {
+                                                 'key': token['oauth_token'], 'secret': token['oauth_token_secret']}))
+        r = requests.get(
+            url,
+            headers={
+                'Authorization': authorization
+            }
+        )
+        if (r.status_code != 200):
+            return None, r
+        token = parse.parse_qs(r.text)
+        self.oauth_token = token['oauth_token'][0]
+        self.oauth_token_secret = token['oauth_token_secret'][0]
+        return {'oauth_token': self.oauth_token, 'oauth_token_secret': self.oauth_token_secret}, r
+
     def xauth(self):
         url = self.oauth_endpoint + '/oauth/access_token'
         params = {
@@ -116,6 +150,6 @@ class Fanfou:
             data=params,
             files=files
         )
-        if(r.status_code != 200):
+        if (r.status_code != 200):
             return None, r
         return r.json(), r
