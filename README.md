@@ -84,7 +84,7 @@ ff.post(uri, params={}, files=None)
 ### Examples
 
 ```python
-# Get Request token
+# Get request token
 token, _ = ff.request_token()
 print(token)
 
@@ -92,15 +92,15 @@ print(token)
 token, _ = ff.access_token()
 print(token)
 
-# Get home-timeline
+# Get timeline
 tl, _ = ff.get('/statuses/home_timeline')
 print(tl)
 
-# Post a status
+# Post status
 st, _ = ff.post('/statuses/update', {status: 'hi flora'})
 print(st)
 
-# Upload a photo
+# Upload photo
 st, _ = ff.post(
   '/photos/upload',
   params={'status': 'unicorn'},
