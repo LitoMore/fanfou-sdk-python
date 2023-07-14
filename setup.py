@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup
-import fanfou_sdk
 
 DESC = open('README.md').read()
 
 setup(name='fanfou_sdk',
-      version='0.0.2',
+      version='0.0.3',
       description='Fanfou SDK for Python',
       author='LitoMore',
       author_email='litomore@gmail.com',
