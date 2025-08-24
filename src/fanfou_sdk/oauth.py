@@ -85,7 +85,7 @@ class OAuth(object):
         return base_string
 
     def get_signing_key(self, token_secret=''):
-        if (self.last_ampersand == False) & (token_secret == ''):
+        if (not self.last_ampersand) & (token_secret == ''):
             return self.escape(self.consumer['secret'])
         return self.escape(self.consumer['secret']) + '&' + self.escape(token_secret)
 
